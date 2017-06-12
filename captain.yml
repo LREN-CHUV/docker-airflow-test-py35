@@ -1,0 +1,9 @@
+airflow_test_py35:
+  build: Dockerfile
+  image: hbpmip/airflow-test-py35
+  pre:
+    - echo "Preparing airflow-test-py35"
+  post:
+    - echo "Finished building airflow-test-py35"
+  test:
+    - ./tests/test.sh
