@@ -16,13 +16,18 @@ get_script_dir () {
 
 cd "$(get_script_dir)"
 
-if groups $USER | grep &>/dev/null '\bdocker\b'; then
-  DOCKER="docker"
+if [ "$CIRCLECI" = true ] || groups $USER | grep &>/dev/null '\bdocker\b'; then
+  DOCKER_COMPOSE="docker-compose"
 else
-  DOCKER="sudo docker"
+  DOCKER_COMPOSE="sudo docker-compose"
 fi
 
 echo
 echo "Test airflow-test-py35"
-$DOCKER run -i -t --rm --entrypoint "/usr/local/bin/airflow" hbpmip/airflow-test-py35:latest version
-$DOCKER run -i -t --rm --entrypoint "/usr/local/bin/nosetests" hbpmip/airflow-test-py35:latest --version
+$DOCKER_COMPOSE test_airflow
+$DOCKER_COMPOSE test_nose
+
+# Cleanup
+echo
+$DOCKER_COMPOSE stop
+$DOCKER_COMPOSE rm -f > /dev/null 2> /dev/null

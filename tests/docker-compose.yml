@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  test_airflow:
+    image: "hbpmip/airflow-test-py35:latest"
+    entrypoint: "/usr/local/bin/airflow"
+    command: "version"
+
+  test_nose:
+    image: "hbpmip/airflow-test-py35:latest"
+    entrypoint: "/usr/local/bin/nosetests"
+    command: "--version"
