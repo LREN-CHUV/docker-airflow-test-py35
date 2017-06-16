@@ -18,13 +18,13 @@ RUN apk add --update --no-cache \
       libmagic
 
 RUN pip -v install \
-      apache-airflow==1.8.1 \
       pydicom>=0.9.9 \
       SQLAlchemy>=1.1.6 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
       psycopg2>=2.7.1 \
-      nose==1.3.7
+    && pip -v install apache-airflow==1.8.1 \
+    && pip -v install nose==1.3.7
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/airflow-test-py35" \
