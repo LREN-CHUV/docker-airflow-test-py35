@@ -17,7 +17,7 @@ RUN apk add --update --no-cache \
       linux-headers \
       libmagic
 
-RUN pip install \
+RUN pip -v install \
       apache-airflow==1.8.1 \
       pydicom>=0.9.9 \
       SQLAlchemy>=1.1.6 \
