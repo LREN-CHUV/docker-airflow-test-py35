@@ -24,8 +24,8 @@ fi
 
 echo
 echo "Test airflow-test-py35"
-$DOCKER_COMPOSE test_airflow
-$DOCKER_COMPOSE test_nose
+$DOCKER_COMPOSE run test_airflow
+$DOCKER_COMPOSE run test_nose
 
 # Cleanup
 echo
