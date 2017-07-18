@@ -41,6 +41,10 @@ ENTRYPOINT ["nodetests", "your_tests.py"]
 
 Run: `./build.sh`
 
+## Test
+
+Run: `./tests/test.sh`
+
 ## Publish on Docker Hub
 
 Run: `./publish.sh`
