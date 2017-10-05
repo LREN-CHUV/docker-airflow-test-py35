@@ -10,7 +10,7 @@ This docker image is available as an automated build on [the docker registry hub
 
 
 ```console
-$ docker run hbpmip/airflow-test-py35:1.8.1-0
+$ docker run hbpmip/airflow-test-py35:1.8.2-0
 ```
 
 ## How to use this image
@@ -20,7 +20,7 @@ Create a new image including the source code and the unit tests to execute.
 ### Dockerfile
 
 ```dockerfile
-FROM hbpmip/airflow-test-py35:1.8.1-0
+FROM hbpmip/airflow-test-py35:1.8.2-0
 
 COPY your_pkg/ /src/your_pkg/
 COPY your/tests/ /src/tests/
