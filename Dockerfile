@@ -54,7 +54,7 @@ RUN pip install docker-compose
 ### Code copied from docker-compose-for-ci/Dockerfile
 
 RUN apk add --update --no-cache bash build-base git py-pip python python-dev curl \
-    && pip2.7 install pre-commit \
+    && pip2.7 install pre-commit==1.3.0 \
     && sed -i -e 's|/usr/bin/python|/usr/bin/python2.7|' /usr/bin/pre-commit \
     && curl -sSL https://raw.githubusercontent.com/harbur/captain/v1.1.0/install.sh | bash \
     && rm -rf /var/cache/apk/* /tmp/*
@@ -75,7 +75,7 @@ RUN apk add --update --no-cache \
 
 RUN pip -v install \
       pydicom>=0.9.9 \
-      SQLAlchemy>=1.1.6 \
+      sqlalchemy>=1.1.9 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
       psycopg2>=2.7.1 \
