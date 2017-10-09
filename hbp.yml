@@ -51,9 +51,9 @@ testing:
     - command: /tests/tesh.sh
 
 release_management:
-  current_version: 1.8.2-2
-  current_code_release: https://github.com/HBPMedical/docker-airflow-test-py35/archive/1.8.2-2.zip
-  current_docker_release: docker pull hbpmip/airflow-test-py35:1.8.2-2
+  current_version: 1.8.2-3
+  current_code_release: https://github.com/HBPMedical/docker-airflow-test-py35/archive/1.8.2-3.zip
+  current_docker_release: docker pull hbpmip/airflow-test-py35:1.8.2-3
   release_script: 'publish.sh'
 
 continuous_integration:
@@ -68,10 +68,10 @@ continuous_integration:
 distribution:
   docker_hub:
     name: hbpmip/airflow-test-py35
-    current_tag: 1.8.2-2
+    current_tag: 1.8.2-3
     url: https://hub.docker.com/r/hbpmip/airflow-test-py35/
     badge: https://img.shields.io/badge/docker-hbpmip%2Fairflow-test-py35-008bb8.svg
-    command: docker pull hbpmip/airflow-test-py35:1.8.2-2
+    command: docker pull hbpmip/airflow-test-py35:1.8.2-3
 
 planning:
   github:
