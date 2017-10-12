@@ -78,7 +78,7 @@ RUN pip -v install \
       sqlalchemy>=1.1.9 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
-      psycopg2>=2.7.1 \
+      psycopg2>=2.7.3 \
     && pip -v install apache-airflow==1.8.2 \
     && pip -v install nose==1.3.7
 
