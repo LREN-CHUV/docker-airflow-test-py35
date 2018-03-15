@@ -75,7 +75,7 @@ RUN apk add --update --no-cache \
 
 RUN pip -v install \
       pydicom>=0.9.9 \
-      sqlalchemy>=1.1.9 \
+      sqlalchemy>=1.1.14 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
       psycopg2>=2.7.3 \
