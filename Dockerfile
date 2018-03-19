@@ -75,10 +75,10 @@ RUN apk add --update --no-cache \
 
 RUN pip -v install \
       pydicom>=0.9.9 \
-      sqlalchemy>=1.1.14 \
+      sqlalchemy==1.2.5 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
-      psycopg2>=2.7.3 \
+      psycopg2-binary==2.7.4 \
     && pip -v install apache-airflow==1.9.0 \
     && pip -v install nose==1.3.7
 
