@@ -1,17 +1,13 @@
 FROM python:3.5-alpine
 MAINTAINER Ludovic Claude <ludovic.claude@chuv.ch>
 
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
-
 ### Install Docker - code copied from https://github.com/docker-library/docker/blob/168a6d227d021c6d38c3986b7c668702ec172fa7/17.06/Dockerfile
 
 RUN apk add --no-cache \
 		ca-certificates
 
 ENV DOCKER_CHANNEL stable
-ENV DOCKER_VERSION 17.06.2-ce
+ENV DOCKER_VERSION 18.06.0-ce
 # TODO ENV DOCKER_SHA256
 # https://github.com/docker/docker-ce/blob/5b073ee2cf564edee5adca05eee574142f7627bb/components/packaging/static/hash_files !!
 # (no SHA file artifacts on download.docker.com yet as of 2017-06-07 though)
@@ -46,17 +42,11 @@ RUN set -ex; \
 	dockerd -v; \
 	docker -v
 
-### Install docker-compose - code copied from https://github.com/tmaier/docker-compose/blob/master/17.06/Dockerfile
-
-RUN apk add --no-cache py-pip
-RUN pip install docker-compose
-
 ### Code copied from docker-compose-for-ci/Dockerfile
 
 RUN apk add --update --no-cache bash build-base git py-pip python python-dev curl \
     && pip2.7 install pre-commit==1.15.1 \
     && sed -i -e 's|/usr/bin/python|/usr/bin/python2.7|' /usr/bin/pre-commit \
-    && curl -sSL https://raw.githubusercontent.com/harbur/captain/v1.1.0/install.sh | bash \
     && rm -rf /var/cache/apk/* /tmp/*
 
 ### Install Airflow and other dependencies
@@ -71,16 +61,22 @@ RUN apk add --update --no-cache \
       libxml2 \
       libxml2-dev  \
       linux-headers \
-      libmagic
-
-RUN pip -v install \
+      libmagic \
+      libffi-dev \
+    && pip -v install \
       pydicom>=0.9.9 \
       sqlalchemy==1.2.5 \
       python-magic>=0.4.12 \
       nibabel>=2.1.0 \
       psycopg2-binary==2.7.4 \
+      docker-compose \
     && pip -v install apache-airflow==1.9.0 \
-    && pip -v install nose==1.3.7
+    && pip -v install nose==1.3.7 \
+    && apk del gcc build-base
+
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/airflow-test-py35" \
